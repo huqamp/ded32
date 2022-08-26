@@ -3,11 +3,11 @@
 void unit_test_roots(void) {
     struct TestUnit array[] = {0, 0,  0,   InfinityRoot,         NAN,     NAN,
                                3, 2,  100, NoRoot,               NAN,     NAN,
-                               0, 5,  0,   OneRoot,              0,       0,
+                               0, 5,  0,   TwoRoot,              0,       0,
                                0, 5, -5,   OneRoot,              1,       1,
                                1, 2,  1,   OneRoot,             -1,      -1,
                                2, 5,  2,   TwoRoot,             -2,      -0.5,
-                               1, 3,  2,   TwoRoot,             -2,      -1,
+                               1, 3,  2,   TwoRoot,             -1,      -1,
                                1, 4,  1,   TwoRoot,             -3.732,  -0.267};
 
     int errors = 0, numbers_tests = sizeof(array) / sizeof (array[0]);
