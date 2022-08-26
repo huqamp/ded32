@@ -1,0 +1,15 @@
+.vscode/
+bin/
+doc/
+html/
+latex/
+obj/
+auf
+ded32_build_log.html
+ded32.bmarks
+ded32.cbp
+ded32.cbp.save
+ded32.depend
+equation.h.save
+main.cpp.save
+*.save
