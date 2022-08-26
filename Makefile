@@ -1,16 +1,12 @@
-all: hello
+CC = g++
+SRC_DIR = src
+CFLAGS = -I include -Wall -Wextra
+all: run
 
-hello: main.o other.o equation.o testing.o
-	g++ main.o other.o equation.o testing.o -o auf
+run: $(SRC_DIR)/main.cpp $(SRC_DIR)/other.cpp $(SRC_DIR)/equation.cpp $(SRC_DIR)/testing.cpp
+	 $(CC) $(CFLAGS) $^ -o auf
+	 @./auf
 
-main.o: main.cpp
-	g++ -c main.cpp
-
-equation.o: equation.cpp
-	g++ -c equation.cpp
-
-other.o: other.cpp
-	g++ -c other.cpp
-
-testing.o: testing.cpp
-	g++ -c testing.cpp
+run_test: $(SRC_DIR)/main.cpp $(SRC_DIR)/other.cpp $(SRC_DIR)/equation.cpp $(SRC_DIR)/testing.cpp
+		  $(CC) -D TESTING $(CFLAGS) $^ -o auf
+		  @./auf

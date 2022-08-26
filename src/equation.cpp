@@ -1,11 +1,11 @@
 #include "equation.h"
 
 void input_roots(double* a, double* b, double* c) {
-    printf("Enter coefficients\n");
+    printf("Enter coefficients a b c\n");
     while (scanf("%lg %lg %lg", a, b, c) != 3) {
         input_clear();
         printf("Incorrect input\n"
-               "Enter coefficients\n");
+               "Enter coefficients a b c\n");
     }
 
 }
@@ -27,19 +27,27 @@ void output_roots(const int number_roots, const double x1, const double x2) {
         printf("Infinity_roots\n");
         break;
     default:
-        assert(0 && "WTF");
+        printf("ERROR : unexpected numbers_roots, got number_roots: %d, possible_numbers_roots: %d %d %d %d\n", 
+                number_roots, NoRoot, OneRoot, TwoRoot, InfinityRoot);
         break;
     }
 }
 
 int find_roots(const double a, const double b, const double c, double* x1, double* x2) {
+    ASSERT(x1 != NULL);
+    ASSERT(x2 != NULL);
+    ASSERT(x1 != x2);
     if (compare(a, 0)) {
         if (compare(b, 0)) {
             return compare(c, 0) ? InfinityRoot : NoRoot;
         }
         else {
-            if (compare(c, 0)) *x1 = *x2 = 0;
-            else               *x1 = *x2 = -c / b;
+            if (compare(c, 0)) {
+                *x1 = *x2 = 0;
+            }
+            else {           
+                *x1 = *x2 = -c / b;
+            }
             return OneRoot;
         }
     }
@@ -51,8 +59,14 @@ int find_roots(const double a, const double b, const double c, double* x1, doubl
             }
             
             double sq = -b / a;
-            *x1 = min(sq, 0);
-            *x2 = max(sq, 0);
+            if (sq < 0) { 
+                *x1 = sq
+                *x2 = 0
+            }
+            else {
+                *x1 = 0;
+                *x2 = sq;
+            }
             return TwoRoot;
         }
 
