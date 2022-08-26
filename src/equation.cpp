@@ -60,8 +60,8 @@ int find_roots(const double a, const double b, const double c, double* x1, doubl
             
             double sq = -b / a;
             if (sq < 0) { 
-                *x1 = sq
-                *x2 = 0
+                *x1 = sq;
+                *x2 = 0;
             }
             else {
                 *x1 = 0;
